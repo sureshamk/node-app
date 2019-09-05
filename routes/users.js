@@ -3,12 +3,13 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const config = require('./../config');
 
+
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
   try {
 
     var options = { keepAlive: 1, useNewUrlParser: true };
-    var connection = mongoose.createConnection(`mongodb://localhost/user_10`, options);
+    var connection = mongoose.createConnection(`${config.db}/user_10`, options);
 
     const UserModel = connection.model('User');
     var users = await UserModel.getUsersByDb();
@@ -24,7 +25,7 @@ router.get('/:userId/posts', async function (req, res, next) {
   try {
 
     var options = { keepAlive: 1, useNewUrlParser: true };
-    var connection = mongoose.createConnection(`mongodb://localhost/user_${req.params.userId}`, options);
+    var connection = mongoose.createConnection(`${config.db}/user_${req.params.userId}`, options);
 
     const UserModel = connection.model('Post');
     var users = await UserModel.find();
@@ -40,7 +41,7 @@ router.put('/:userId', async function (req, res, next) {
   try {
     var options = { keepAlive: 1, useNewUrlParser: true };
 
-    var connection = mongoose.createConnection(`mongodb://localhost/user_${req.params.userId}`, options);
+    var connection = mongoose.createConnection(`${config.db}/user_${req.params.userId}`, options);
 
     const UserModel = connection.model('User');
     var user = await UserModel.findOne();

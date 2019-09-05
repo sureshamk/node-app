@@ -4,7 +4,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const config = require('./../config');
 /**
  * User schema
  */
@@ -89,7 +89,7 @@ async function getDbs () {
     const MongoClient = require('mongodb').MongoClient;
     const test = require('assert');
 // Connection url
-    const url = 'mongodb://localhost:27017';
+    const url = `${config.db}:27017`;
 // Database Name
     const dbName = 'config';
 // Connect using MongoClient
@@ -115,7 +115,7 @@ UserSchema.static('getUsersByDb', async function () {
     var users = [];
     for (const db of dbs) {
       var options = { keepAlive: 1, useNewUrlParser: true };
-      var connection = mongoose.createConnection(`mongodb://localhost/${db.name}`, options);
+      var connection = mongoose.createConnection(`${config.db}/${db.name}`, options);
 
       const UserModel = connection.model('User');
       let user = await UserModel.findOne()

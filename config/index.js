@@ -1,4 +1,4 @@
 module.exports = {
-  db: process.env.MONGODB_HOST || 'mongodb://localhost/',
+  db: process.env.MONGODB_HOST || 'mongodb://localhost',
   userBaseDBKey: 'user'
 };

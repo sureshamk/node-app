@@ -3,12 +3,23 @@ services:
  app:
   build: .
   ports:
-   - "5555:5555"
+   - "3000:3000"
   env_file: .env
   depends_on:
    - db
   volumes:
-   - .:/usr/src/api
+   - .:/home/api/app
+  entrypoint: ["npm","start"]
+ data_server:
+  build: .
+  ports:
+   - "5000:5000"
+  env_file: .env
+  depends_on:
+   - db
+  volumes:
+   - .:/home/api/app
+  entrypoint: ["npm","run", "data"]
  db:
   image: mongo:latest
   ports:
