@@ -5,11 +5,18 @@ This is based on Express JS api server will run on docker
 * **NodeJS => v8.11.3** 
 * **Docker**
 * **docker-compose**
+* **MongoDB**
 
 ### Running Data server 
 ```bash
 npm run data 
 ```
+or through docker 
+```bash
+docker-compose up data_server
+```
+
+
 API END point : http://localhost:5000/ 
 
 #### API to fill the db 
@@ -25,6 +32,11 @@ API END point : http://localhost:5000/
 ```bash
 npm start
 ```
+
+or through docker 
+```bash
+docker-compose up app
+```
 API END point : http://localhost:3000/ 
 
 #### GET users 
@@ -39,6 +51,6 @@ API END point : http://localhost:3000/
 * payload json 
 ```json
 {
-    "avatar": "samplesdsdsdassdadads"
+    "avatar": "http://my.website.com/my.jpg"
 }
 ```
