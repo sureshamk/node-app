@@ -13,7 +13,9 @@ npm run data
 ```
 or through docker 
 ```bash
-docker-compose up data_server
+docker-compose up data_server # for specific server 
+docker-compose up  # for all app to up and running 
+
 ```
 
 
